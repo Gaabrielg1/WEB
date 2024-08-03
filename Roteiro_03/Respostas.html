@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercício</title>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function ordenaLista(){
+                let lista = document.getElementById("txtList").value;
+                lista = lista.split(",");
+                for (j = lista.length; j > 0; j--){
+                    for (i = 0; i < j-1; i++){
+                        if(lista[i] > lista[i+1]){
+                        let aux = lista[i]
+                        lista[i] = lista[i+1]
+                        lista[i+1] = aux
+                        }
+                    }
+                }
+                let resultado = 'Lista Ordenada:' + lista;
+                document.getElementById("resultado").innerText = resultado;
+            }
+
+            function somaLista(){
+                var lista = document.getElementById("txtsList").value;
+                lista = lista.split(",");
+                var aux = 0;
+                for (i = 0; i < lista.length; i++){
+                    if(((lista[i]%2) != 0) && ((lista[i]%3) == 0))
+                    aux += parseInt(lista[i])
+                }
+                let resultado = 'A soma é: ' + aux;
+                document.getElementById("resultado1").innerText = resultado;
+            }
+
+            function fatorial(){
+                let lista = document.getElementById("txtfList").value;
+                lista = lista.split(",");
+                let aux = [];
+                for (i = 0; i < lista.length; i++){
+                    let num = parseInt(lista[i]);
+                    let result = parseInt(lista[i]);
+                    if (num === 0 || num === 1){
+                        aux.push(1);
+                        continue
+                    }
+                    while (num > 1) { 
+                        num--;
+                        result *= num;
+                    }
+                    aux.push(result)
+                }
+                let resultado = 'fatoriais dos numeros: ' + aux;
+                document.getElementById("resultado2").innerText = resultado;
+            } 
+
+            function calcMedia(){
+                let lista = document.getElementById("txtmList").value;
+                lista = lista.split(",");
+                let aux = 0;
+                let positivo = 0;
+                let negativo = 0;
+                for (i = 0; i < lista.length; i++){
+                    if(lista[i]<0){
+                        negativo += 1
+                    }
+                    if(lista[i]>=0){
+                        positivo += 1
+                    }
+                    aux += parseInt(lista[i])
+                }
+                let percentualP = positivo/lista.length*100
+                let percentualN = negativo/lista.length*100
+                let media = aux/lista.length;
+
+                let resultado = 'A média é: ' + media.toFixed(2) + ', os valores positivos são: ' + positivo + ', os negativos são: ' + negativo + '. Com percentual Positivo e Negativo respectivamente: ' + percentualP.toFixed(2) + '% ' + percentualN.toFixed(2) + '%';
+                document.getElementById("resultado3").innerText = resultado;
+            }
+            
+            function inverter(){
+                let lista = document.getElementById("txtiList").value;
+                lista = lista.split(",");
+                let resultado = 'Lista invertida: ' + lista.reverse().join(", ");
+                document.getElementById("resultado4").innerText = resultado;
+            }
+
+        </script>
+    </head>
+    <div>
+        <p>
+            Questão 6:
+        </p>
+            Numeros: <input type="text" id="txtList">
+            <button onclick="ordenaLista()">Calcular</button>
+            <p id="resultado"></p>
+    </div>
+
+    <div>
+        <p>
+            Questão 7:
+        </p>
+        <body>
+            Numeros: <input type="text" id="txtsList">
+            <button onclick="somaLista()">Calcular</button>
+            <p id="resultado1"></p>
+        </body>
+    </div>
+
+    <div>
+        <p>
+            Questão 8:
+        </p>
+        <body>
+            Numeros: <input type="text" id="txtfList">
+            <button onclick="fatorial()">Calcular</button>
+            <p id="resultado2"></p>
+        </body>
+    </div>
+
+    <div>
+        <p>
+            Questão 9:
+        </p>
+        <body>
+            Numeros: <input type="text" id="txtmList">
+            <button onclick="calcMedia()">Calcular</button>
+            <p id="resultado3"></p>
+        </body>
+
+        <p>
+            Questão 10:
+        </p>
+        <body>
+            Numeros: <input type="text" id="txtiList">
+            <button onclick="inverter()">Calcular</button>
+            <p id="resultado4"></p>
+        </body>
+    </div>
+</html> 
